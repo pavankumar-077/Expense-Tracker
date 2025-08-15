@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon App.js"
   },
-  "author": "Shubham Garg",
+  "author": "Pavan Kumar",
   "license": "MIT",
   "description": "",
   "dependencies": {

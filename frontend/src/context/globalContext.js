@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { toast, Toaster } from 'react-hot-toast';
 
-const BASE_URL = "http://localhost:5500/api/v1/";
-
+const BASE_URL = `${process.env.REACT_APP_BACKEND_URL}/api/v1/`;
+console.log(BASE_URL)
 const GlobalContext = React.createContext();
 
 export const GlobalProvider = ({ children }) => {
@@ -71,7 +71,7 @@ export const GlobalProvider = ({ children }) => {
   // Check user authentication status
   const checkUser = async () => {
     try {
-      const { data } = await axios.post(`http://localhost:5500`,{}, {
+      const { data } = await axios.post(process.env.REACT_APP_BACKEND_URL,{}, {
         withCredentials: true,
       });
       if (data.status) {
