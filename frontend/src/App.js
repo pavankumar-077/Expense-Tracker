@@ -1,7 +1,7 @@
-import React, {useState, useMemo} from 'react'
+import React, { useState, useMemo } from 'react'
 import styled from "styled-components";
 import bg from './img/bg.png'
-import {MainLayout} from './styles/Layouts'
+import { MainLayout } from './styles/Layouts'
 import Orb from './Components/Orb/Orb'
 import Navigation from './Components/Navigation/Navigation'
 import Dashboard from './Components/Dashboard/Dashboard';
@@ -19,50 +19,51 @@ function App() {
   const [active, setActive] = useState(1)
 
   const displayData = () => {
-    switch(active){
+    switch (active) {
       case 1:
         return <Dashboard />
       case 2:
         return <ViewTransactions />
       case 3:
         return <Income />
-      case 4: 
+      case 4:
         return <Expenses />
-      default: 
+      default:
         return <Dashboard />
     }
   }
 
   const orbMemo = useMemo(() => {
     return <Orb />
-  },[])
+  }, [])
 
 
   return (
     <AppStyled bg={bg} className="App">
       {orbMemo}
-        <BrowserRouter>
+      <BrowserRouter>
         <GlobalProvider>
           <Routes>
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
+
             <Route
               path="/"
               element={
                 <>
-                      <MainLayout>
+                  <MainLayout>
 
-                  <Navigation active={active} setActive={setActive} />
-                  <main>{displayData()}</main>
+                    <Navigation active={active} setActive={setActive} />
+                    <main>{displayData()}</main>
                   </MainLayout>
 
                 </>
-                  }
+              }
             />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
           <ToastContainer />
-          </GlobalProvider>
-        </BrowserRouter>
+        </GlobalProvider>
+      </BrowserRouter>
     </AppStyled>
   );
 }
