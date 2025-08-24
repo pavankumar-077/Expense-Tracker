@@ -21,6 +21,10 @@ app.use(express.json())
 app.use(cookieParser());
 
 
+app.get('/',(req,res)=>{
+    res.status(200).send('Backend is working')
+})
+
 readdirSync('./routes').map((route) => app.use('', require('./routes/' + route)))
 
 const server = () => {
